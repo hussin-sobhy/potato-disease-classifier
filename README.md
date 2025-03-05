@@ -29,7 +29,7 @@ Inside the `screenshots/` folder, you’ll find images illustrating the applicat
 
 | Base Model (1)                                                                 | Optimized Model (2)                                                                  |
 |--------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| ![Base Model Screenshot](screenshots/Screenshot%202025-03-05%20083655.png)     | ![Optimized Model Screenshot](screenshots/Screenshot%202025-03-05%20083549.png)      |
+| ![Base Model Screenshot](screenshots/Screenshot2025-03-05_083655)     | ![Optimized Model Screenshot](screenshots/Screenshot2025-03-05_083549)      |
 
 
 These show how the app looks when classifying a healthy potato leaf.
@@ -43,7 +43,24 @@ Upload an image, select a model version, and see classification results.
 
 ## Project Structure
 
-├── api/ │ ├── main.py │ └── frontend/ │ └── index.html ├── models/ │ ├── base.h5 │ └── optimized.h5 ├── screenshots/ │ ├── Screenshot2025-03-05_083655.png │ └── Screenshot2025-03-05_083549.png ├── training/ │ ├── training_base.ipynb │ └── training_optimized.ipynb ├── Dockerfile ├── requirements.txt └── README.md
+    ```plaintext
+      .
+      ├── api/
+      │   ├── main.py
+      │   └── frontend/
+      │       └── index.html
+      ├── models/
+      │   ├── base.h5
+      │   └── optimized.h5
+      ├── screenshots/
+      │   ├── Screenshot2025-03-05_083655.png
+      │   └── Screenshot2025-03-05_083549.png
+      ├── training/
+      │   ├── training_base.ipynb
+      │   └── training_optimized.ipynb
+      ├── Dockerfile
+      ├── requirements.txt
+      └── README.md
 
 - **api/main.py**: FastAPI logic (endpoints for image upload & inference).
 - **models/**: Folder with pre-trained `.h5` files (base & optimized).
