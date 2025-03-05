@@ -1,0 +1,26 @@
+model_config_list {
+  config {
+    name: "potato_classifier"
+    base_path: "/serving/models/"
+    model_platform: "tensorflow"
+    model_version_policy {
+      specific {
+        versions: 1
+        versions: 2
+        versions: 3
+      }
+    }
+    version_labels {
+      key: "base"
+      value: 1
+    }
+    version_labels {
+      key: "transfer_learning"
+      value: 2
+    }
+    version_labels {
+      key: "optimized"
+      value: 3
+    }
+  }
+}
