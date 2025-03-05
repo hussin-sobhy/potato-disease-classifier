@@ -12,6 +12,8 @@ It includes two TensorFlow/Keras models:
 
 ## Overview
 
+I developed a Potato Disease Classifier that uses two deep learning models (Base and Optimized) to identify Early Blight, Late Blight, or healthy potato leaves. The project is built with Python, TensorFlow, and FastAPI, and it includes a user-friendly frontend for image uploads. After containerizing the application with Docker, I deployed it on Google Cloud Run for easy scalability and near-zero cost hosting.
+
 - **Goal**: Quickly diagnose potato leaf diseases (or confirm health) using deep learning.
 - **Models**: Trained with TensorFlow. The “Base Model” is simpler; the “Optimized Model” applies additional tuning.
 - **Frontend**: A simple HTML/JS interface (`index.html`) for uploading images and displaying predictions.
