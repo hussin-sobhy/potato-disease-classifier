@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato Disease Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .upload-section {
+            margin: 20px 0;
+        }
+        #imagePreview {
+            max-width: 300px;
+            margin-top: 20px;
+            display: none;
+            border-radius: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        .probability-bar {
+            background-color: #e0e0e0;
+            height: 20px;
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        .probability-fill {
+            background-color: #3498db;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #loading {
+            display: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Potato Disease Classifier</h1>
+
+        <div class="upload-section">
+            <label for="modelVersion">Select Model Version:</label>
+            <select id="modelVersion">
+                <option value="1" selected>Base Model (1)</option>
+                <option value="2">Optimized Model (2)</option>
+            </select>
+            <br><br>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            <button onclick="document.getElementById('imageInput').click()">Upload Image</button>
+        </div>
+
+        <img id="imagePreview" alt="Image Preview">
+
+        <div id="loading">Processing image...</div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('imageInput').addEventListener('change', async function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Get selected model version: '1' or '2'
+            const selectedVersion = document.getElementById("modelVersion").value;
+
+            // Show image preview
+            const preview = document.getElementById('imagePreview');
+            const loading = document.getElementById('loading');
+            const resultDiv = document.getElementById('result');
+            
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+            loading.style.display = 'block';
+            resultDiv.style.display = 'none';
+
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch(`/predict_image?version=${selectedVersion}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${await response.text()}`);
+                }
+
+                const data = await response.json();
+
+                loading.style.display = 'none';
+                resultDiv.style.display = 'block';
+
+                if (!data.predicted_class) {
+                    resultDiv.innerHTML = `<div style="color: red;">Error: Invalid response from server.</div>`;
+                    return;
+                }
+
+                // Display results
+                let html = `
+                    <h3>Prediction Results:</h3>
+                    <p><strong>Predicted Class:</strong> ${data.predicted_class.replace(/_/g, ' ')}</p>
+                    <p><strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%</p>
+                    <h4>Class Probabilities:</h4>
+                `;
+
+                for (const [className, probability] of Object.entries(data.probabilities)) {
+                    const percentage = (probability * 100).toFixed(2);
+                    html += `
+                        <div>
+                            <p>${className.replace(/_/g, ' ')}: ${percentage}%</p>
+                            <div class="probability-bar">
+                                <div class="probability-fill" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                resultDiv.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `<div style="color: red;">Error: ${error.message}</div>`;
+            }
+        });
+    </script>
+</body>
+</html>
