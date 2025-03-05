@@ -61,6 +61,22 @@ Upload an image, select a model version, and see classification results.
 │    └── training_optimized.ipynb
 ├── README.md
 
+├── api/
+│   ├── main.py
+├── models/
+│   ├── base.h5
+│   └── optimized.h5
+├── screenshots/
+│   ├── Screenshot2025-03-05_083655.png
+│   └── Screenshot2025-03-05_083549.png
+├── Dockerfile
+├── index.html
+├── requirements.txt
+├── training_base.ipynb
+├── training_optimized.ipynb
+└── README.md
+
+
 
 
 - **api/main.py**: FastAPI logic (endpoints for image upload & inference).
@@ -110,9 +126,9 @@ Open http://127.0.0.1:8080 in your browser to view the interface.
    gcloud builds submit --tag gcr.io/<PROJECT_ID>/potato_api:v1 .
 
 2. Deploy
-  ```bash
-  gcloud run deploy potato-api \
-    --image gcr.io/<PROJECT_ID>/potato_api:v1 \
-    --platform managed \
-    --region us-central1 \
-    --allow-unauthenticated
+   ```bash
+   gcloud run deploy potato-api \
+     --image gcr.io/<PROJECT_ID>/potato_api:v1 \
+     --platform managed \
+     --region us-central1 \
+     --allow-unauthenticated
