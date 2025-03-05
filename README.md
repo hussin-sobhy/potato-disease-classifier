@@ -27,14 +27,10 @@ Please visit the link to download the images if you’d like to replicate or ret
 
 Inside the `screenshots/` folder, you’ll find images illustrating the application in action:
 
-| Base Model (1)                             | Optimized Model (2)                            |
-|--------------------------------------------|-----------------------------------------------|
-| ![Base Model Screenshot](screenshots/base_model.png) | ![Optimized Model Screenshot](screenshots/optimized_model.png) |
+| Base Model (1)                                                                 | Optimized Model (2)                                                                  |
+|--------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| ![Base Model Screenshot](screenshots/Screenshot%202025-03-05%20083655.png)     | ![Optimized Model Screenshot](screenshots/Screenshot%202025-03-05%20083549.png)      |
 
-For example:
-
-![Base Model Prediction](screenshots/Screenshot2025-03-05_083655.png)
-![Optimized Model Prediction](screenshots/Screenshot2025-03-05_083549.png)
 
 These show how the app looks when classifying a healthy potato leaf.
 
@@ -47,37 +43,7 @@ Upload an image, select a model version, and see classification results.
 
 ## Project Structure
 
-├── api/ 
-│    └── main.py
-│    ├── frontend/
-│          └── index.html
-├── models/ 
-│    └── base.h5 
-│    └── optimized.h5 
-├── Dockerfile 
-├── requirements.txt 
-├── training
-│    └── training_base.ipynb 
-│    └── training_optimized.ipynb
-├── README.md
-
-├── api/
-│   ├── main.py
-├── models/
-│   ├── base.h5
-│   └── optimized.h5
-├── screenshots/
-│   ├── Screenshot2025-03-05_083655.png
-│   └── Screenshot2025-03-05_083549.png
-├── Dockerfile
-├── index.html
-├── requirements.txt
-├── training_base.ipynb
-├── training_optimized.ipynb
-└── README.md
-
-
-
+├── api/ │ ├── main.py │ └── frontend/ │ └── index.html ├── models/ │ ├── base.h5 │ └── optimized.h5 ├── screenshots/ │ ├── Screenshot2025-03-05_083655.png │ └── Screenshot2025-03-05_083549.png ├── training/ │ ├── training_base.ipynb │ └── training_optimized.ipynb ├── Dockerfile ├── requirements.txt └── README.md
 
 - **api/main.py**: FastAPI logic (endpoints for image upload & inference).
 - **models/**: Folder with pre-trained `.h5` files (base & optimized).
