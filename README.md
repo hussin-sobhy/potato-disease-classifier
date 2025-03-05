@@ -117,3 +117,35 @@ Open http://127.0.0.1:8080 in your browser to view the interface.
      --platform managed \
      --region us-central1 \
      --allow-unauthenticated
+
+
+## Alternative Version (TF Serving)
+
+An alternative version of this project uses **TensorFlow Serving** to host **three models**:
+- **Base Model**
+- **Transfer Learning Model**
+- **Optimized Model**
+
+In this variant, the application leverages a TF Serving configuration file (`models.config.a`) to manage multiple models and version labels. The deployment is designed using a multi-container architecture:
+- One container runs the **FastAPI** application (handling API endpoints, image preprocessing, and the user interface).
+- A separate container runs **TensorFlow Serving** (hosting the three models and managing inference requests).
+
+Although this version was not deployed to production, it demonstrates a scalable approach where models and the API can be updated independently.
+
+### Running Locally (TF Serving Alternative)
+
+1. **Navigate to the project folder** (assuming your folder structure has a `serving` directory):
+   ```powershell
+   cd project_folder\serving
+
+2. Build and run the TensorFlow Serving container:
+   ```powershell
+   docker build -f Dockerfile.tf -t potato_tf_serving:v1 .
+   docker run -d -p 8501:8501 --name potato_tf_container potato_tf_serving:v1
+
+3. Build and run the FastAPI container:
+   ```powershell
+   docker build -f Dockerfile.api -t potato_api:v1 .
+   docker run -d -p 8000:8000 --name potato_api_container potato_api:v1
+
+After running these commands, the TensorFlow Serving container will listen on port 8501 and host the three models, while the FastAPI container (which interfaces with TF Serving) will listen on port 8000. You can access the FastAPI application at http://localhost:8000 in your browser to test this alternative setup.
