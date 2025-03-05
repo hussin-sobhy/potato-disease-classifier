@@ -29,7 +29,7 @@ Inside the `screenshots/` folder, you’ll find images illustrating the applicat
 
 | Base Model (1)                                                                 | Optimized Model (2)                                                                  |
 |--------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| ![Base Model Screenshot](screenshots/Screenshot2025-03-05_083655)     | ![Optimized Model Screenshot](screenshots/Screenshot2025-03-05_083549)      |
+| ![Base Model Screenshot](screenshots/Screenshot2025-03-05_083655.png)     | ![Optimized Model Screenshot](screenshots/Screenshot2025-03-05_083549.png)      |
 
 
 These show how the app looks when classifying a healthy potato leaf.
