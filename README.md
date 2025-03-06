@@ -47,24 +47,22 @@ Upload an image, select a model version, and see classification results.
 
 ## Project Structure
 
-    ```plaintext
-      .
-      ├── api/
-      │   ├── main.py
-      │   └── frontend/
-      │       └── index.html
-      ├── models/
-      │   ├── base.h5
-      │   └── optimized.h5
-      ├── screenshots/
-      │   ├── Screenshot2025-03-05_083655.png
-      │   └── Screenshot2025-03-05_083549.png
-      ├── training/
-      │   ├── training_base.ipynb
-      │   └── training_optimized.ipynb
-      ├── Dockerfile
-      ├── requirements.txt
-      └── README.md
+    ├── api/
+    │   ├── main.py
+    │   └── frontend/
+    │       └── index.html
+    ├── models/
+    │   ├── base.h5
+    │   └── optimized.h5
+    ├── screenshots/
+    │   ├── Screenshot2025-03-05_083655.png
+    │   └── Screenshot2025-03-05_083549.png
+    ├── training/
+    │   ├── training_base.ipynb
+    │   └── training_optimized.ipynb
+    ├── Dockerfile
+    ├── requirements.txt
+    └── README.md
 
 - **api/main.py**: FastAPI logic (endpoints for image upload & inference).
 - **models/**: Folder with pre-trained `.h5` files (base & optimized).
