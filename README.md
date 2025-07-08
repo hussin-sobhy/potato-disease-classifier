@@ -136,7 +136,7 @@ Although this version was not deployed to production, it demonstrates a scalable
 
 1. **Navigate to the project folder** (assuming your folder structure has a `serving` directory):
    ```powershell
-   cd project_folder\serving
+   cd PotatoDiseaseClassification_tf-serving\serving
 
 2. Build and run the TensorFlow Serving container:
    ```powershell
