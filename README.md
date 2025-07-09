@@ -75,7 +75,7 @@ Upload an image, select a model version, and see classification results.
 
 1. **Clone** this repo:
    ```bash
-   git clone https://github.com/hussinxx700/potato-disease-classifier.git
+   git clone https://github.com/hussin-sobhy/potato-disease-classifier.git
    cd potato-disease-classifier
 
 2. Create a Python virtual environment **(recommended)**:
