@@ -1,5 +1,17 @@
 # Potato Disease Classifier
 
+<!-- Stack Badges -->
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/) 
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/) 
+[![Keras](https://img.shields.io/badge/Keras-D00000?logo=keras&logoColor=white)](https://keras.io/) 
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/) 
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com/) 
+[![Google Cloud Run](https://img.shields.io/badge/Cloud%20Run-4285F4?logo=googlecloud&logoColor=white)](https://cloud.google.com/run) 
+[![TensorFlow Serving](https://img.shields.io/badge/TensorFlow%20Serving-0099FF?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/tfx/serving) 
+[![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
+ 
+
+
 This repository contains a FastAPI application that classifies **Potato Leaf** images into three categories:
 - **Potato___Early_blight**
 - **Potato___Late_blight**
